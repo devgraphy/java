@@ -4,6 +4,7 @@
  * */
 /* ----------<접근법>----------
  *  5만원, 1만원, 5천원, 1천원이 몇 매인지 그리고 500원, 100원, 50원, 10원, 1원을 각각 배열의 원소로 구성
+ *  금액 단위 문자열 또한 배열로 구성해서 if, else문을 덕지덕지 쓸 필요없다.
  *  큰 금액부터 나누어 떨어지지 않을 때까지 다른 배열에 몇 개가 들어가는지 계산.
  *  나누어 떨어지지 않으면 인덱스 증가(다음 금액 계산)
  * */
@@ -15,6 +16,7 @@ public class VendingMachine {
 
 	public static void main(String[] args) {
 		int[] val = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+		String[] str = {"오만원권","만원권","오천원권","천원권","오백원","백원","오십원","십원","일원"};
 		int[] cnt = new int[9];	// 0으로 초기화
 		int idx = 0;
 		Scanner in = new Scanner(System.in);
@@ -29,15 +31,8 @@ public class VendingMachine {
 		}
 		for(int i = 0; i < val.length; i++) {
 			if(cnt[i] > 0) {
-				if(i == 0) System.out.println("오만원권 " + cnt[i] + "매");
-				else if(i == 1) System.out.println("만원건 " + cnt[i] + "매");
-				else if(i == 2) System.out.println("오천원건 " + cnt[i] + "매");
-				else if(i == 3) System.out.println("천원건 " + cnt[i] + "매");
-				else if(i == 4) System.out.println("오백원 " + cnt[i] + "개");
-				else if(i == 5) System.out.println("백원 " + cnt[i] + "개");
-				else if(i == 6) System.out.println("오십원 " + cnt[i] + "개");
-				else if(i == 7) System.out.println("십원 " + cnt[i] + "개");
-				else if(i == 8) System.out.println("일원 " + cnt[i] + "개");
+				if(i < 4) System.out.println(str[i] + " " + cnt[i] + "매");
+				else System.out.println(str[i] + " " + cnt[i] + "개");
 			}
 		}
 	}
